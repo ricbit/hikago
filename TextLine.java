@@ -1,8 +1,12 @@
 import java.util.*;
 
+// Contains an array of strings.
 public class TextLine {
   ArrayList<String> line;
-  int len,space,MAX;
+  // len is unused in this file.
+  // space is 0 for first string, 1 for subsequent strings.
+  // MAX is constant 28.
+  int len,space,MAX; 
   
 // -------------------------------------------------------------------  
 
@@ -15,22 +19,33 @@ public class TextLine {
   
 // -------------------------------------------------------------------  
 
+// Returns length of given string. Special case: "@NAME" has length 8.
   int getLength(String s) {
-    if (s.equals("@NAME")) {
-      return 8;
-    } else {
-      return s.length();
-    }
+  // Count occurrences of {0x87, 0x56, 0x87, 0x40, 0x87, 0x54}
+  int numNames = 0;
+  int last = s.lastIndexOf(ControlString.name);
+  int current = s.indexOf(ControlString.name);
+  while (current >= 0 && current <= last)
+  {
+    numNames++;
+    current = s.indexOf(ControlString.name, current + 1);
+  }
+  
+  // control bytes of @NAME has 6 bytes, but it should have length 8
+    return s.length() + numNames * 2; 
   }
 
 // -------------------------------------------------------------------  
 
+// Returns whether adding s to the array will make the total length exceed MAX.
+// s is not actually added.
   boolean fit (String s) {
     return (len()+space+getLength(s)<=MAX);
   }
   
 // -------------------------------------------------------------------  
 
+// Returns the sum of getLength() of all stored strings.
   int len() {
     int l=0;
     
@@ -42,15 +57,17 @@ public class TextLine {
   
 // -------------------------------------------------------------------  
 
+// Adds s to the stored strings. If s is not the first string, " " will be added before it.
   void add (String s) {
     if (space>0) 
       line.add(" ");
-    line.add(s);  
-    space=1;
+    line.add(s);
+  space = 1;
   }
   
 // -------------------------------------------------------------------  
 
+// Concatenates all strings.
   StringBuffer flush () {
     StringBuffer out=new StringBuffer();    
     
@@ -62,17 +79,13 @@ public class TextLine {
 
 // -------------------------------------------------------------------  
 
+// Converts all characters in all strings to 8-bit integers, and returns them as an array.
+// "@NAME"s are converted to a special 6-byte sequence.
   ArrayList<Integer> getBuffer() {
     ArrayList<Integer> buffer=new ArrayList<Integer>();
-    int name[]={0x87,0x56,0x87,0x40,0x87,0x54};
-    
+
     for (String s:line) {
-      if (s.equals("@NAME"))
-        for (int i=0; i<name.length; i++)
-          buffer.add(name[i]);
-      else  
-        for (int i=0; i<s.length(); i++)
-          buffer.add(s.charAt(i)&0xFF);
+      for (int i=0; i<s.length(); i++) buffer.add(s.charAt(i)&0xFF);
     }
     
     return buffer;
