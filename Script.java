@@ -276,8 +276,11 @@ public class Script {
 
 // -------------------------------------------------------------------  
 
-// Reads <pointer> from node, reads 4 bytes from gameData[pointer] that
-// forms addr, and reads bytes from gameData[addr] and writes to a .sjs file until 0 is met.
+// Reads <pointer> from node,
+// reads 4 bytes from gameData[pointer] that forms addr, 
+// reads bytes from gameData[addr], 
+// writes to a .sjs file,
+// until 0 is met.
   public static void readText (Node n) throws XMLError {
     int pointer, addr;
     DataOutputStream out;
@@ -327,6 +330,7 @@ public class Script {
     while (gameData[readPtr] != 0) readPtr++;
     int originalLength = readPtr - addr + 1; // Including \0
   
+    // Replace control strings with corresponding bytes.
     for (int i = 0; i < controlStrings.size(); i++) {
       translated = translated.replace(
         controlStrings.get(i).controlString, 
@@ -348,7 +352,7 @@ public class Script {
       System.out.println("Translated text: " + getText(n));
       addr = freePos + 0x8000000;
       for (int i = 0; i < 4; i++)
-        gameData[pointer+i] = (addr >> (i*8)) & 0xFF;  
+        gameData[pointer + i] = (addr >> (i*8)) & 0xFF;  
       freePos = text.insert(gameData, freePos);
     }
   }    
@@ -375,16 +379,6 @@ public class Script {
         writeGraphic(allGraphics.get(i));
     }
   
-  /*
-    for (int i=0; i<list.getLength(); i++) 
-      if (list.item(i).getNodeType()==Document.ELEMENT_NODE && list.item(i).getNodeName().equals("graphic")) {
-        if (extract)
-          readGraphic(list.item(i));
-        else  
-          writeGraphic(list.item(i));
-      }
-    */
-  
     // Process Text
     ArrayList<Node> allStrings = recursiveFindElements(n, "text");
     for (int i = 0; i < allStrings.size(); i++) {
@@ -393,16 +387,6 @@ public class Script {
       else
         writeText(allStrings.get(i));
     }
-  
-  /*
-    for (int i=0; i<list.getLength(); i++) 
-      if (list.item(i).getNodeType()==Document.ELEMENT_NODE && list.item(i).getNodeName().equals("text")) {
-        if (extract)
-          readText(list.item(i));
-        else  
-          writeText(list.item(i));
-      }
-    */
   
     // Write back
     if (!extract) {
