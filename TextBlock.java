@@ -26,15 +26,6 @@ public class TextBlock {
       line[current].add(text[i]);
     }
   }
-
-// -------------------------------------------------------------------  
-
-// New: constructs TextBlock from one string. The string will be
-// converted to byte array and have its control strings ("@NAME" and such)
-// replaced by corresponding control bytes.
-  TextBlock (String text) {
-	// Is this ever used?
-  }
   
 // -------------------------------------------------------------------  
 

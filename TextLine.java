@@ -3,17 +3,15 @@ import java.util.*;
 // Contains an array of strings.
 public class TextLine {
   ArrayList<String> line;
-  // len is unused in this file.
   // space is 0 for first string, 1 for subsequent strings. It controls whether to append
   // a " " when adding a string.
   // MAX is constant 28.
-  int len, space, MAX; 
+  int space, MAX; 
   
 // -------------------------------------------------------------------  
 
   TextLine() {
     line = new ArrayList<String>();
-    len = 0;
     space = 0;
     MAX = 28;
   }
