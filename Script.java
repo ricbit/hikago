@@ -30,33 +30,56 @@ public class Script {
   // A cursor into gameData for writing text.
   static int freePos;
   static ArrayList<ControlString> controlStrings;
-  
+
 // -------------------------------------------------------------------  
 
-// Within node n, looks for a child element called element, and returns its text.
-// If multiple such elements exist, throws XMLError.
-  public static String getElement (Node n, String element) throws XMLError {
-    NodeList list, list2;
-    String s = null;
-    
-    list = n.getChildNodes();
+// Finds the given attribute of given element.
+  public static String getAttribute(Node n, String attribute) {
+    return n.getAttributes().getNamedItem(attribute).getNodeValue();
+  }
+
+// -------------------------------------------------------------------  
+
+// Returns the text within given element. Throws XMLError if no text exists.
+  public static String getText(Node n) throws XMLError {
+    NodeList list = n.getChildNodes();
+    for (int i = 0; i < list.getLength(); i++) {
+      if (list.item(i).getNodeType() == Document.TEXT_NODE)
+        return list.item(i).getNodeValue();
+    }
+  
+    throw new XMLError ("Node " + n.getNodeName() + " contains no text");
+  }
+
+// -------------------------------------------------------------------  
+
+// Finds and returns a child element of n with given name. Throws XMLError if no such element exists.
+  public static Node getChildElement(Node n, String element) throws XMLError {
+    NodeList list = n.getChildNodes();
     for (int i = 0; i < list.getLength(); i++) 
       if (list.item(i).getNodeType() == Document.ELEMENT_NODE &&
           list.item(i).getNodeName().equals(element)) {
-        list2 = list.item(i).getChildNodes();
-        
-        for (int j = 0; j < list2.getLength(); j++) 
-          if (list2.item(j).getNodeType() == Document.TEXT_NODE) {
-            if (s == null)
-              s = list2.item(j).getNodeValue();
-            else  
-              throw new XMLError ("More than one " + element);
-          }
+        return list.item(i);
       }
-    
-    return s;  
+      
+    throw new XMLError ("No element named " + element + " in node " + n.getNodeName());
   }
 
+// -------------------------------------------------------------------  
+
+// Within node n, looks for a child element called element, and returns its text.
+  public static String getTextInChildElement (Node n, String element) throws XMLError {
+	return getText(getChildElement(n, element));
+  }
+
+// -------------------------------------------------------------------  
+
+// Within node n, looks for a child element called element, and returns its queried attribute.
+// If no such element exists, throws XMLError.
+  public static String getAttributeInChildElement (Node n, String element, String attribute) throws XMLError {
+	return getAttribute(getChildElement(n, element), attribute);
+  }
+  
 // -------------------------------------------------------------------  
 
 // Recursively find and return all elements named element inside n.
@@ -74,41 +97,6 @@ public class Script {
     }
   
     return result;
-  }
-  
-// -------------------------------------------------------------------  
-
-// Finds the given attribute of given element.
-  public static String getAttribute(Node n, String attribute) {
-    return n.getAttributes().getNamedItem(attribute).getNodeValue();
-  }
-
-// -------------------------------------------------------------------  
-
-// Returns the text within given element.
-  public static String getText(Node n) {
-    NodeList list = n.getChildNodes();
-    for (int i = 0; i < list.getLength(); i++) {
-      if (list.item(i).getNodeType() == Document.TEXT_NODE) return list.item(i).getNodeValue();
-    }
-  
-    return "";
-  }
-
-// -------------------------------------------------------------------  
-
-// Within node n, looks for a chile element called element, and returns its queried attribute.
-// If no such attribute exists, this should throw some exception.
-  public static String getAttribute (Node n, String element, String attribute) {
-    NodeList list;
-    
-    list = n.getChildNodes();
-    for (int i = 0; i < list.getLength(); i++) 
-      if (list.item(i).getNodeType() == Document.ELEMENT_NODE &&
-          list.item(i).getNodeName().equals(element)) 
-        return list.item(i).getAttributes().getNamedItem(attribute).getNodeValue();
-
-    return null;
   }
 
 // -------------------------------------------------------------------  
@@ -215,10 +203,10 @@ public class Script {
     IndexColorModel palette;
     BufferedImage image = null;
     
-    addr = Integer.parseInt(getElement(n, "addr"), 16);
-    width = Integer.parseInt(getElement(n, "width"));
-    height = Integer.parseInt(getElement(n, "height"));
-    name = "_" + getElement(n, "name") + ".bmp";
+    addr = Integer.parseInt(getTextInChildElement(n, "addr"), 16);
+    width = Integer.parseInt(getTextInChildElement(n, "width"));
+    height = Integer.parseInt(getTextInChildElement(n, "height"));
+    name = "_" + getTextInChildElement(n, "name") + ".bmp";
     
     File f = new File(name);
     if (!f.exists())
@@ -239,7 +227,7 @@ public class Script {
           for (int i = 0; i < 4; i++)
             for (int ii = 0; ii < 2; ii++) 
               gameData[addr + i + j*4 + ww*4*8 + hh*4*8*width] |=
-		        (myGetPixel(image, ww*8 + i*2 + ii, hh*8 + j) & 0xf) << (ii*4);
+                (myGetPixel(image, ww*8 + i*2 + ii, hh*8 + j) & 0xf) << (ii*4);
 
     System.out.println ("inserted graphic <" + name + ">.");
   }
@@ -255,12 +243,12 @@ public class Script {
     IndexColorModel palette;
     BufferedImage image;
     
-    addr = Integer.parseInt(getElement(n, "addr"), 16);
-    width = Integer.parseInt(getElement(n, "width"));
-    height = Integer.parseInt(getElement(n, "height"));
-    name = getElement(n, "name") + ".bmp";
-    index = Integer.parseInt(getAttribute(n, "palette", "index"));
-    palette = readPalette(getElement(n, "palette"), index);
+    addr = Integer.parseInt(getTextInChildElement(n, "addr"), 16);
+    width = Integer.parseInt(getTextInChildElement(n, "width"));
+    height = Integer.parseInt(getTextInChildElement(n, "height"));
+    name = getTextInChildElement(n, "name") + ".bmp";
+    index = Integer.parseInt(getAttributeInChildElement(n, "palette", "index"));
+    palette = readPalette(getTextInChildElement(n, "palette"), index);
     
     image = new BufferedImage (width*8, height*8, BufferedImage.TYPE_BYTE_BINARY, palette);
 
@@ -375,8 +363,8 @@ public class Script {
     list = n.getChildNodes();
     
     // Search for the game rom
-    gameData = readFile(getElement(n, "game"));    
-    System.out.println ("Found <" + getElement(n, "game") + ">, " + gameData.length + " bytes.");
+    gameData = readFile(getTextInChildElement(n, "game"));    
+    System.out.println ("Found <" + getTextInChildElement(n, "game") + ">, " + gameData.length + " bytes.");
         
     // Process Graphics
     ArrayList<Node> allGraphics = recursiveFindElements(n, "graphic");
@@ -418,8 +406,8 @@ public class Script {
   
     // Write back
     if (!extract) {
-      writeFile(gameData, "_" + getElement(n, "game"));
-      System.out.println ("Finished <_" + getElement(n, "game") + ">.");
+      writeFile(gameData, "_" + getTextInChildElement(n, "game"));
+      System.out.println ("Finished <_" + getTextInChildElement(n, "game") + ">.");
     }     
     
   }
