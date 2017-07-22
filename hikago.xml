@@ -2620,7 +2620,7 @@
       </meijin>
     </freeMode>
     <tsumego>
-	  <menu>
+      <menu>
         <text pointer="1ed40">Right</text>
         <text pointer="1edc8">Wrong</text>
         <text pointer="677fc"> Easy</text>
@@ -2631,7 +2631,7 @@
         <text pointer="14539c">@DPAD@Select/@ABUTTON@Confirm</text>
         <text pointer="14538c">Choose from A/B/C</text>
         <text pointer="145390">Play the next move</text>
-	  </menu>
+      </menu>
       <easy>
         <problem001to010>
           <text pointer="28676c">B's turn. How to capture W?</text>
@@ -2679,7 +2679,7 @@
           <text pointer="287c5c">Correct. 2B escapes.</text>
           <text pointer="287cb8">By playing here, W captures 2B.</text>
         </problem001to010>
-		<problem011to020>
+        <problem011to020>
           <text pointer="287e38">B's turn. For 1B to avoid capture, what's the best move?</text>
           <text pointer="287e70">Correct. 1B escapes.</text>
           <text pointer="287ecc">By playing here, W captures 1B.</text>
@@ -2748,7 +2748,7 @@
           <text pointer="28a1d0">Correct. Captures in kou.</text>
           <text pointer="28a22c">By playing here, W captures 1B.</text>
           <text pointer="28a284">By playing here, W captures 1B.</text>
-		  
+          
           <text pointer="28a440">W plays.</text>
           <text pointer="28a4a0">B's turn. W just captured B in kou. Where should B play?</text>
           <text pointer="28a4d8">Correct. 1B avoids capture.</text>
@@ -3144,7 +3144,7 @@
           <text pointer="298928">B has only 1 eye.</text>
         </problem091to100>
       </easy>
-	  <medium>
+      <medium>
         <problem001to010>
           <text pointer="298ab4">B's turn. How can B live?</text>
           <text pointer="298af0">Correct. B guarantees 2 eyes and lives.</text>
@@ -4532,7 +4532,7 @@
       <text pointer="a4e0">Record this game?</text>
       <!--I can't find the "Yes/No" texts of this menu.-->
       <!--
-	  <text pointer="144ad4">Yes</text>
+      <text pointer="144ad4">Yes</text>
       <text pointer="144ad8">No</text>
       <text pointer="144ad4">Yes</text>
       <text pointer="144ad8">No</text>
@@ -4542,7 +4542,7 @@
       <text pointer="2d3698">No</text>
       <text pointer="2d506c">Yes</text>
       <text pointer="2d5070">No</text>
-	  -->
+      -->
       <gameScreen>
         <text pointer="cdc4">pass</text>
         <text pointer="cde8"> is thinking</text>
@@ -4562,7 +4562,7 @@
         <text pointer="cfc8"> draw</text>
         <text pointer="d034">End</text>
         <text pointer="d038"> suggested</text>
-		<text pointer="d0b0"> 0 1 2 3 4 5 6 7 8 9 0</text>
+        <text pointer="d0b0"> 0 1 2 3 4 5 6 7 8 9 0</text>
         <text pointer="d0ec">%d|%s</text>
         <text pointer="143158">End game?/@ABUTTON@Yes/@BBUTTON@No</text>
         <text pointer="14316c">Cannot play here</text>
@@ -4578,10 +4578,10 @@
         <text pointer="d140">Story</text>
         <text pointer="d1b0">Game %d</text>
         <text pointer="d1b4">%d moves</text>
-		<text pointer="d1b8">%d</text>
-		<text pointer="d1bc">-0.5</text>
-		<text pointer="d1d4">.5</text>
-		<text pointer="d240">.5</text>
+        <text pointer="d1b8">%d</text>
+        <text pointer="d1bc">-0.5</text>
+        <text pointer="d1d4">.5</text>
+        <text pointer="d240">.5</text>
         <text pointer="d248">W ----</text>
         <text pointer="d24c">B ----</text>
         <text pointer="d27c">W %s</text>
@@ -4608,14 +4608,14 @@
         <text pointer="1c760">W</text>
         <text pointer="1c764">B</text>
       </archive>
-	  <record>
+      <record>
         <text pointer="15f44">Evaluating</text>
         <text pointer="161d0">Evaluated</text>
-		<text pointer="16264"> 0 1 2 3 4 5 6 7 8 9 0</text>
+        <text pointer="16264"> 0 1 2 3 4 5 6 7 8 9 0</text>
         <text pointer="1637c">Even</text>
         <text pointer="163a0">%s Handi.</text>
         <text pointer="163f4"> W</text>
-		<text pointer="163f8"> B</text>
+        <text pointer="163f8"> B</text>
         <text pointer="1643c">%d|%s</text>
         <text pointer="1648c">Pass</text>
         <text pointer="164a0">Res</text>
@@ -4626,14 +4626,14 @@
         <text pointer="16534">Draw</text>
         <text pointer="16538">%s|%s</text>
         <text pointer="16570">%s /%d moves/%s</text>
-	    <text pointer="16d3c"> 0 1 2 3 4 5 6 7 8 9 0</text>
+        <text pointer="16d3c"> 0 1 2 3 4 5 6 7 8 9 0</text>
         <text pointer="16d9c">Game %s</text>
         <text pointer="16da0">19</text>
         <text pointer="16da4">13</text>
         <text pointer="16dd4">9</text>
         <text pointer="16dd8">%s</text>
         <text pointer="16ddc">Even</text>
-		<text pointer="16e2c">%s Hd.</text>
+        <text pointer="16e2c">%s Hd.</text>
         <text pointer="16e30">None</text>
         <text pointer="16e68">%d</text>
         <text pointer="16e8c">0.5</text>
@@ -4650,7 +4650,7 @@
         <text pointer="17010">%s +%d</text>
         <text pointer="17044">%s +0.5</text>
         <text pointer="17084">%s +%d.5</text>
-	  </record>
+      </record>
       <text pointer="67874">Hikaru</text>
       <text pointer="67888">Akari</text>
       <text pointer="6789c">Tsutsui</text>
