@@ -84,7 +84,7 @@ public class TextLine {
 
     for (String s : line) {
       for (int i = 0; i < s.length(); i++)
-		buffer.add(s.charAt(i) & 0xFF);
+        buffer.add(s.charAt(i) & 0xFF);
     }
     
     return buffer;

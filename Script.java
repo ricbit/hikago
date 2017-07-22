@@ -69,7 +69,7 @@ public class Script {
 
 // Within node n, looks for a child element called element, and returns its text.
   public static String getTextInChildElement (Node n, String element) throws XMLError {
-	return getText(getChildElement(n, element));
+    return getText(getChildElement(n, element));
   }
 
 // -------------------------------------------------------------------  
@@ -77,7 +77,7 @@ public class Script {
 // Within node n, looks for a child element called element, and returns its queried attribute.
 // If no such element exists, throws XMLError.
   public static String getAttributeInChildElement (Node n, String element, String attribute) throws XMLError {
-	return getAttribute(getChildElement(n, element), attribute);
+    return getAttribute(getChildElement(n, element), attribute);
   }
   
 // -------------------------------------------------------------------  
