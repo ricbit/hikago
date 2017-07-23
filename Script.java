@@ -206,7 +206,7 @@ public class Script {
     addr = Integer.parseInt(getTextInChildElement(n, "addr"), 16);
     width = Integer.parseInt(getTextInChildElement(n, "width"));
     height = Integer.parseInt(getTextInChildElement(n, "height"));
-    name = "_" + getTextInChildElement(n, "name") + ".bmp";
+    name = "graphics/_" + getTextInChildElement(n, "name") + ".bmp";
     
     File f = new File(name);
     if (!f.exists())
