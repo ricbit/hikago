@@ -12,14 +12,14 @@ public class TextBlock {
 // no TextLine exceeds 28 characters.
 // If given strings exceeds 4 TextLines, this will throw an exception.
   TextBlock (String[] text) {
-    current=0;
+    current = 0;
     
-    line=new TextLine[4];
+    line = new TextLine[4];
     
-    for (int i=0; i<4; i++)
-       line[i]=new TextLine();
+    for (int i = 0; i < 4; i++)
+       line[i] = new TextLine();
        
-    for (int i=0; i<text.length; i++) {
+    for (int i = 0; i < text.length; i++) {
       if (!line[current].fit(text[i]))
         current++;
         
@@ -27,28 +27,20 @@ public class TextBlock {
     }
   }
   
-  // New: constructs TextBlock from one string. The string will be
-  // converted to byte array and have its control strings ("@NAME" and such)
-  // replaced by corresponding control bytes.
-  TextBlock (String text) {
-  }
-  
 // -------------------------------------------------------------------  
 
 // Prints each TextLine to the console.
   void flush () {
-    for (int i=0; i<=current; i++)
+    for (int i = 0; i <= current; i++)
       System.out.println(line[i].flush());
   }
 
 // -------------------------------------------------------------------  
 
 // Size of TextBlock in bytes, including the \0 at end.
-  int size()
-  {
+  int size () {
     int size = 0;
-    for (int i = 0; i <= current; i++)
-    {
+    for (int i = 0; i <= current; i++) {
       size += line[i].getBuffer().size();
       size += 2;
     }
@@ -57,25 +49,27 @@ public class TextBlock {
     return size;
   }
 
+// -------------------------------------------------------------------  
+  
 // Converts all TextLines to byte arrays, and overwrite gameData with these
 // bytes starting from addr.
-// At the end of each TextLine, an additional 0x81ab (on not last line) or 
-// 0x0 (on last line) is written.
+// At the end of each TextLine, the linebreaker 0x81ab (on not last line) or 
+// the terminator 0x0 (on last line) is written.
 // Returns the address after last written byte.
   int insert (int gameData[], int addr) {
     ArrayList<Integer> buffer;
 
-    for (int i=0; i<=current; i++) {
-      buffer=line[i].getBuffer();
+    for (int i = 0; i <= current; i++) {
+      buffer = line[i].getBuffer();
       
-      for (int j=0; j<buffer.size(); j++)
-        gameData[addr++]=buffer.get(j);
+      for (int j = 0; j < buffer.size(); j++)
+        gameData[addr++] = buffer.get(j);
       
-      if (i==current) 
-        gameData[addr++]=0;
+      if (i == current) 
+        gameData[addr++] = 0;
       else {
-        gameData[addr++]=0x81;
-        gameData[addr++]=0xab;
+        gameData[addr++] = 0x81;
+        gameData[addr++] = 0xab;
       } 
     }
     
