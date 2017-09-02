@@ -12,13 +12,6 @@ import javax.imageio.*;
 import org.xml.sax.*;  
 import org.w3c.dom.*;
 
-// A custom exception that accepts a string on construction.
-class XMLError extends Exception {
-  XMLError (String s) {
-    super ("XMLError: "+s);
-  }
-}
-
 public class Script {
   
 // -------------------------------------------------------------------  
@@ -30,74 +23,6 @@ public class Script {
   // A cursor into gameData for writing text.
   static int freePos;
   static ArrayList<ControlString> controlStrings;
-
-// -------------------------------------------------------------------  
-
-// Finds the given attribute of given element.
-  public static String getAttribute(Node n, String attribute) {
-    return n.getAttributes().getNamedItem(attribute).getNodeValue();
-  }
-
-// -------------------------------------------------------------------  
-
-// Returns the text within given element. Throws XMLError if no text exists.
-  public static String getText(Node n) throws XMLError {
-    NodeList list = n.getChildNodes();
-    for (int i = 0; i < list.getLength(); i++) {
-      if (list.item(i).getNodeType() == Document.TEXT_NODE)
-        return list.item(i).getNodeValue();
-    }
-  
-    throw new XMLError ("Node " + n.getNodeName() + " contains no text");
-  }
-
-// -------------------------------------------------------------------  
-
-// Finds and returns a child element of n with given name. Throws XMLError if no such element exists.
-  public static Node getChildElement(Node n, String element) throws XMLError {
-    NodeList list = n.getChildNodes();
-    for (int i = 0; i < list.getLength(); i++) 
-      if (list.item(i).getNodeType() == Document.ELEMENT_NODE &&
-          list.item(i).getNodeName().equals(element)) {
-        return list.item(i);
-      }
-      
-    throw new XMLError ("No element named " + element + " in node " + n.getNodeName());
-  }
-
-// -------------------------------------------------------------------  
-
-// Within node n, looks for a child element called element, and returns its text.
-  public static String getTextInChildElement (Node n, String element) throws XMLError {
-    return getText(getChildElement(n, element));
-  }
-
-// -------------------------------------------------------------------  
-
-// Within node n, looks for a child element called element, and returns its queried attribute.
-// If no such element exists, throws XMLError.
-  public static String getAttributeInChildElement (Node n, String element, String attribute) throws XMLError {
-    return getAttribute(getChildElement(n, element), attribute);
-  }
-  
-// -------------------------------------------------------------------  
-
-// Recursively find and return all elements named element inside n.
-  public static ArrayList<Node> recursiveFindElements (Node n, String element) {
-    ArrayList<Node> result = new ArrayList<Node>();
-    NodeList list = n.getChildNodes();
-    for (int i = 0; i < list.getLength(); i++) {
-      Node thisNode = list.item(i);
-      if (thisNode.getNodeType() != Document.ELEMENT_NODE) continue;
-      if (thisNode.getNodeName().equals(element)) {
-        result.add(thisNode);
-      } else {
-        result.addAll(recursiveFindElements(thisNode, element));
-      }
-    }
-  
-    return result;
-  }
 
 // -------------------------------------------------------------------  
 
@@ -203,10 +128,10 @@ public class Script {
     IndexColorModel palette;
     BufferedImage image = null;
     
-    addr = Integer.parseInt(getTextInChildElement(n, "addr"), 16);
-    width = Integer.parseInt(getTextInChildElement(n, "width"));
-    height = Integer.parseInt(getTextInChildElement(n, "height"));
-    name = "graphics/_" + getTextInChildElement(n, "name") + ".bmp";
+    addr = Integer.parseInt(XMLHelper.getTextInChildElement(n, "addr"), 16);
+    width = Integer.parseInt(XMLHelper.getTextInChildElement(n, "width"));
+    height = Integer.parseInt(XMLHelper.getTextInChildElement(n, "height"));
+    name = "graphics/_" + XMLHelper.getTextInChildElement(n, "name") + ".bmp";
     
     File f = new File(name);
     if (!f.exists())
@@ -243,12 +168,12 @@ public class Script {
     IndexColorModel palette;
     BufferedImage image;
     
-    addr = Integer.parseInt(getTextInChildElement(n, "addr"), 16);
-    width = Integer.parseInt(getTextInChildElement(n, "width"));
-    height = Integer.parseInt(getTextInChildElement(n, "height"));
-    name = getTextInChildElement(n, "name") + ".bmp";
-    index = Integer.parseInt(getAttributeInChildElement(n, "palette", "index"));
-    palette = readPalette(getTextInChildElement(n, "palette"), index);
+    addr = Integer.parseInt(XMLHelper.getTextInChildElement(n, "addr"), 16);
+    width = Integer.parseInt(XMLHelper.getTextInChildElement(n, "width"));
+    height = Integer.parseInt(XMLHelper.getTextInChildElement(n, "height"));
+    name = XMLHelper.getTextInChildElement(n, "name") + ".bmp";
+    index = Integer.parseInt(XMLHelper.getAttributeInChildElement(n, "palette", "index"));
+    palette = readPalette(XMLHelper.getTextInChildElement(n, "palette"), index);
     
     image = new BufferedImage (width*8, height*8, BufferedImage.TYPE_BYTE_BINARY, palette);
 
@@ -285,7 +210,7 @@ public class Script {
     int pointer, addr;
     DataOutputStream out;
     
-    String pointerStr = getAttribute(n, "pointer");
+    String pointerStr = XMLHelper.getAttribute(n, "pointer");
   
     pointer = Integer.parseInt(pointerStr, 16);
     addr = 0;
@@ -316,8 +241,8 @@ public class Script {
     int pointer, addr;
     TextBlock text;
        
-    String pointerStr = getAttribute(n, "pointer");
-    String translated = getText(n);
+    String pointerStr = XMLHelper.getAttribute(n, "pointer");
+    String translated = XMLHelper.getText(n);
     if (translated.equals("")) return;
   
     pointer = Integer.parseInt(pointerStr, 16);
@@ -349,7 +274,7 @@ public class Script {
       System.out.println("===================================================");
       System.out.println("Warning: text " + pointerStr + " is written to end of ROM.");
       System.out.println("Original text is " + originalLength + " bytes, but translated text is " + newLength + " bytes.");
-      System.out.println("Translated text: " + getText(n));
+      System.out.println("Translated text: " + XMLHelper.getText(n));
       addr = freePos + 0x8000000;
       for (int i = 0; i < 4; i++)
         gameData[pointer + i] = (addr >> (i*8)) & 0xFF;  
@@ -367,11 +292,11 @@ public class Script {
     list = n.getChildNodes();
     
     // Search for the game rom
-    gameData = readFile(getTextInChildElement(n, "game"));    
-    System.out.println ("Found <" + getTextInChildElement(n, "game") + ">, " + gameData.length + " bytes.");
+    gameData = readFile(XMLHelper.getTextInChildElement(n, "game"));    
+    System.out.println ("Found <" + XMLHelper.getTextInChildElement(n, "game") + ">, " + gameData.length + " bytes.");
         
     // Process Graphics
-    ArrayList<Node> allGraphics = recursiveFindElements(n, "graphic");
+    ArrayList<Node> allGraphics = XMLHelper.recursiveFindElements(n, "graphic");
     for (int i = 0; i < allGraphics.size(); i++) {
       if (extract)
         readGraphic(allGraphics.get(i));
@@ -380,7 +305,7 @@ public class Script {
     }
   
     // Process Text
-    ArrayList<Node> allStrings = recursiveFindElements(n, "text");
+    ArrayList<Node> allStrings = XMLHelper.recursiveFindElements(n, "text");
     for (int i = 0; i < allStrings.size(); i++) {
       if (extract)
         readText(allStrings.get(i));
@@ -390,8 +315,8 @@ public class Script {
   
     // Write back
     if (!extract) {
-      writeFile(gameData, "_" + getTextInChildElement(n, "game"));
-      System.out.println ("Finished <_" + getTextInChildElement(n, "game") + ">.");
+      writeFile(gameData, "_" + XMLHelper.getTextInChildElement(n, "game"));
+      System.out.println ("Finished <_" + XMLHelper.getTextInChildElement(n, "game") + ">.");
     }     
     
   }
