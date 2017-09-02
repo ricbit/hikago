@@ -5,6 +5,7 @@
 
 import java.util.*;
 import java.io.*;
+import java.lang.*;
 import java.nio.charset.*;
 import java.awt.image.*;
 import javax.xml.parsers.*;
@@ -23,6 +24,10 @@ public class Script {
   // A cursor into gameData for writing text.
   static int freePos;
   static ArrayList<ControlString> controlStrings;
+  // Storage optimization: for strings written to end of ROM, store their address.
+  // When another entry has the same string, we can then modify the pointer towards the
+  // already written string, instead of writing the string again.
+  static HashMap<String, Integer> writtenStrings = new HashMap<String, Integer>();
 
 // -------------------------------------------------------------------  
 
@@ -73,6 +78,26 @@ public class Script {
     return;
   }
     
+// -------------------------------------------------------------------
+
+// Reads 4 bytes from gameData, starting from given location, and constructs
+// an address from them.
+  public static int readAddressFrom (int location) {
+	int address = 0;
+    for (int i = 0; i < 4; i++)
+      address |= gameData[location + i] << (i*8);
+    return address - 0x8000000;  
+  }
+
+// -------------------------------------------------------------------  
+
+// Writes the given address as 4 bytes to gameData, starting from given location.
+  public static void writeAddressTo (int address, int location) {
+	address += 0x8000000;
+	for (int i = 0; i < 4; i++)
+	  gameData[location + i] = (address >> (i*8)) & 0xFF;  
+  }
+  
 // -------------------------------------------------------------------  
 
 // Reads 48 bytes from address (index * 48) to construct an IndexColorModel with 16 colors.
@@ -144,7 +169,7 @@ public class Script {
     }     
 
     for (int i = 0; i < height*width*4*8; i++)
-       gameData[addr+i] = 0;
+      gameData[addr+i] = 0;
 
     for (int hh = 0; hh < height; hh++)
       for (int ww = 0; ww < width; ww++)
@@ -202,27 +227,24 @@ public class Script {
 // -------------------------------------------------------------------  
 
 // Reads <pointer> from node,
-// reads 4 bytes from gameData[pointer] that forms addr, 
-// reads bytes from gameData[addr], 
+// reads 4 bytes from gameData[pointer] that forms pointerValue, 
+// reads bytes from gameData[pointerValue], 
 // writes to a .sjs file,
 // until 0 is met.
   public static void readText (Node n) throws XMLError {
-    int pointer, addr;
+    int pointerAddress, pointerValue;
     DataOutputStream out;
     
     String pointerStr = XMLHelper.getAttribute(n, "pointer");
   
-    pointer = Integer.parseInt(pointerStr, 16);
-    addr = 0;
-    for (int i = 0; i < 4; i++)
-      addr |= gameData[pointer + i] << (i*8);
-    addr -= 0x8000000;  
+    pointerAddress = Integer.parseInt(pointerStr, 16);
+    pointerValue = readAddressFrom(pointerAddress);
 
     try {
       out = new DataOutputStream (new FileOutputStream (pointerStr + ".sjs"));
-      while (gameData[addr] != 0) {
-        out.writeByte(gameData[addr++]);  
-        out.writeByte(gameData[addr++]);  
+      while (gameData[pointerValue] != 0) {
+        out.writeByte(gameData[pointerValue++]);  
+        out.writeByte(gameData[pointerValue++]);  
       }
       out.close();
     } catch (IOException fe) {
@@ -235,25 +257,23 @@ public class Script {
 // -------------------------------------------------------------------  
 
 // Reads <pointer> from node, writes 4 bytes to gameData[pointer] that
-// forms addr (freePos + 0x80000000), and reads text from <data> and writes bytes to gameData[addr].
+// forms pointerValue (freePos + 0x80000000), and reads text from <data> and writes bytes to gameData[pointerValue].
 // freePos is updated after writing.
   public static void writeText (Node n) throws XMLError {
-    int pointer, addr;
+    int pointerAddress, pointerValue;
     TextBlock text;
        
     String pointerStr = XMLHelper.getAttribute(n, "pointer");
     String translated = XMLHelper.getText(n);
     if (translated.equals("")) return;
   
-    pointer = Integer.parseInt(pointerStr, 16);
+    pointerAddress = Integer.parseInt(pointerStr, 16);
+	pointerValue = readAddressFrom(pointerAddress);
   
     // First, attempt to write translated text into position of original text.
-    addr = 0;
-    for (int i = 0; i < 4; i++) addr |= gameData[pointer + i] << (i * 8);
-    addr -= 0x8000000;
-    int readPtr = addr;
+    int readPtr = pointerValue;
     while (gameData[readPtr] != 0) readPtr++;
-    int originalLength = readPtr - addr + 1; // Including \0
+    int originalLength = readPtr - pointerValue + 1; // Including \0
   
     // Replace control strings with corresponding bytes.
     for (int i = 0; i < controlStrings.size(); i++) {
@@ -267,18 +287,29 @@ public class Script {
     int newLength = text.size(); // Also including \0
   
     if (newLength <= originalLength) {
-      // Translated text is shorter: able to write
-      text.insert(gameData, addr);
+      // Translated text is shorter: able to overwrite original text
+      text.insert(gameData, pointerValue);
     } else {
-      // Translated text is longer: write to end of ROM
-      System.out.println("===================================================");
-      System.out.println("Warning: text " + pointerStr + " is written to end of ROM.");
-      System.out.println("Original text is " + originalLength + " bytes, but translated text is " + newLength + " bytes.");
-      System.out.println("Translated text: " + XMLHelper.getText(n));
-      addr = freePos + 0x8000000;
-      for (int i = 0; i < 4; i++)
-        gameData[pointer + i] = (addr >> (i*8)) & 0xFF;  
-      freePos = text.insert(gameData, freePos);
+      // Translated text is longer: possibly write to end of ROM
+      
+      // Have we seen the same string before?
+      if (writtenStrings.containsKey(translated)) {
+        // Yes: modify pointer instead of write string
+        pointerValue = writtenStrings.get(translated);
+		writeAddressTo(pointerValue, pointerAddress);
+        System.out.println("===================================================");
+        System.out.println("Text " + pointerStr + " reuses a previously written string; " + newLength + " bytes saved.");
+      } else {
+        // No: write string and log
+        System.out.println("===================================================");
+        System.out.println("Text " + pointerStr + " is written to end of ROM.");
+        System.out.println("Original text is " + originalLength + " bytes, but translated text is " + newLength + " bytes.");
+        System.out.println("Translated text: " + XMLHelper.getText(n));
+        pointerValue = freePos;
+        writeAddressTo(pointerValue, pointerAddress);
+        freePos = text.insert(gameData, freePos);
+        writtenStrings.put(translated, pointerValue);
+      }
     }
   }    
 
