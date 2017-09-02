@@ -5,19 +5,13 @@
 
 import java.util.*;
 import java.io.*;
+import java.lang.*;
 import java.nio.charset.*;
 import java.awt.image.*;
 import javax.xml.parsers.*;
 import javax.imageio.*;
 import org.xml.sax.*;  
 import org.w3c.dom.*;
-
-// A custom exception that accepts a string on construction.
-class XMLError extends Exception {
-  XMLError (String s) {
-    super ("XMLError: "+s);
-  }
-}
 
 public class Script {
   
@@ -30,74 +24,10 @@ public class Script {
   // A cursor into gameData for writing text.
   static int freePos;
   static ArrayList<ControlString> controlStrings;
-
-// -------------------------------------------------------------------  
-
-// Finds the given attribute of given element.
-  public static String getAttribute(Node n, String attribute) {
-    return n.getAttributes().getNamedItem(attribute).getNodeValue();
-  }
-
-// -------------------------------------------------------------------  
-
-// Returns the text within given element. Throws XMLError if no text exists.
-  public static String getText(Node n) throws XMLError {
-    NodeList list = n.getChildNodes();
-    for (int i = 0; i < list.getLength(); i++) {
-      if (list.item(i).getNodeType() == Document.TEXT_NODE)
-        return list.item(i).getNodeValue();
-    }
-  
-    throw new XMLError ("Node " + n.getNodeName() + " contains no text");
-  }
-
-// -------------------------------------------------------------------  
-
-// Finds and returns a child element of n with given name. Throws XMLError if no such element exists.
-  public static Node getChildElement(Node n, String element) throws XMLError {
-    NodeList list = n.getChildNodes();
-    for (int i = 0; i < list.getLength(); i++) 
-      if (list.item(i).getNodeType() == Document.ELEMENT_NODE &&
-          list.item(i).getNodeName().equals(element)) {
-        return list.item(i);
-      }
-      
-    throw new XMLError ("No element named " + element + " in node " + n.getNodeName());
-  }
-
-// -------------------------------------------------------------------  
-
-// Within node n, looks for a child element called element, and returns its text.
-  public static String getTextInChildElement (Node n, String element) throws XMLError {
-    return getText(getChildElement(n, element));
-  }
-
-// -------------------------------------------------------------------  
-
-// Within node n, looks for a child element called element, and returns its queried attribute.
-// If no such element exists, throws XMLError.
-  public static String getAttributeInChildElement (Node n, String element, String attribute) throws XMLError {
-    return getAttribute(getChildElement(n, element), attribute);
-  }
-  
-// -------------------------------------------------------------------  
-
-// Recursively find and return all elements named element inside n.
-  public static ArrayList<Node> recursiveFindElements (Node n, String element) {
-    ArrayList<Node> result = new ArrayList<Node>();
-    NodeList list = n.getChildNodes();
-    for (int i = 0; i < list.getLength(); i++) {
-      Node thisNode = list.item(i);
-      if (thisNode.getNodeType() != Document.ELEMENT_NODE) continue;
-      if (thisNode.getNodeName().equals(element)) {
-        result.add(thisNode);
-      } else {
-        result.addAll(recursiveFindElements(thisNode, element));
-      }
-    }
-  
-    return result;
-  }
+  // Storage optimization: for strings written to end of ROM, store their address.
+  // When another entry has the same string, we can then modify the pointer towards the
+  // already written string, instead of writing the string again.
+  static HashMap<String, Integer> writtenStrings = new HashMap<String, Integer>();
 
 // -------------------------------------------------------------------  
 
@@ -148,6 +78,26 @@ public class Script {
     return;
   }
     
+// -------------------------------------------------------------------
+
+// Reads 4 bytes from gameData, starting from given location, and constructs
+// an address from them.
+  public static int readAddressFrom (int location) {
+	int address = 0;
+    for (int i = 0; i < 4; i++)
+      address |= gameData[location + i] << (i*8);
+    return address - 0x8000000;  
+  }
+
+// -------------------------------------------------------------------  
+
+// Writes the given address as 4 bytes to gameData, starting from given location.
+  public static void writeAddressTo (int address, int location) {
+	address += 0x8000000;
+	for (int i = 0; i < 4; i++)
+	  gameData[location + i] = (address >> (i*8)) & 0xFF;  
+  }
+  
 // -------------------------------------------------------------------  
 
 // Reads 48 bytes from address (index * 48) to construct an IndexColorModel with 16 colors.
@@ -203,10 +153,10 @@ public class Script {
     IndexColorModel palette;
     BufferedImage image = null;
     
-    addr = Integer.parseInt(getTextInChildElement(n, "addr"), 16);
-    width = Integer.parseInt(getTextInChildElement(n, "width"));
-    height = Integer.parseInt(getTextInChildElement(n, "height"));
-    name = "graphics/_" + getTextInChildElement(n, "name") + ".bmp";
+    addr = Integer.parseInt(XMLHelper.getTextInChildElement(n, "addr"), 16);
+    width = Integer.parseInt(XMLHelper.getTextInChildElement(n, "width"));
+    height = Integer.parseInt(XMLHelper.getTextInChildElement(n, "height"));
+    name = "graphics/_" + XMLHelper.getTextInChildElement(n, "name") + ".bmp";
     
     File f = new File(name);
     if (!f.exists())
@@ -219,7 +169,7 @@ public class Script {
     }     
 
     for (int i = 0; i < height*width*4*8; i++)
-       gameData[addr+i] = 0;
+      gameData[addr+i] = 0;
 
     for (int hh = 0; hh < height; hh++)
       for (int ww = 0; ww < width; ww++)
@@ -243,12 +193,12 @@ public class Script {
     IndexColorModel palette;
     BufferedImage image;
     
-    addr = Integer.parseInt(getTextInChildElement(n, "addr"), 16);
-    width = Integer.parseInt(getTextInChildElement(n, "width"));
-    height = Integer.parseInt(getTextInChildElement(n, "height"));
-    name = getTextInChildElement(n, "name") + ".bmp";
-    index = Integer.parseInt(getAttributeInChildElement(n, "palette", "index"));
-    palette = readPalette(getTextInChildElement(n, "palette"), index);
+    addr = Integer.parseInt(XMLHelper.getTextInChildElement(n, "addr"), 16);
+    width = Integer.parseInt(XMLHelper.getTextInChildElement(n, "width"));
+    height = Integer.parseInt(XMLHelper.getTextInChildElement(n, "height"));
+    name = XMLHelper.getTextInChildElement(n, "name") + ".bmp";
+    index = Integer.parseInt(XMLHelper.getAttributeInChildElement(n, "palette", "index"));
+    palette = readPalette(XMLHelper.getTextInChildElement(n, "palette"), index);
     
     image = new BufferedImage (width*8, height*8, BufferedImage.TYPE_BYTE_BINARY, palette);
 
@@ -277,27 +227,24 @@ public class Script {
 // -------------------------------------------------------------------  
 
 // Reads <pointer> from node,
-// reads 4 bytes from gameData[pointer] that forms addr, 
-// reads bytes from gameData[addr], 
+// reads 4 bytes from gameData[pointer] that forms pointerValue, 
+// reads bytes from gameData[pointerValue], 
 // writes to a .sjs file,
 // until 0 is met.
   public static void readText (Node n) throws XMLError {
-    int pointer, addr;
+    int pointerAddress, pointerValue;
     DataOutputStream out;
     
-    String pointerStr = getAttribute(n, "pointer");
+    String pointerStr = XMLHelper.getAttribute(n, "pointer");
   
-    pointer = Integer.parseInt(pointerStr, 16);
-    addr = 0;
-    for (int i = 0; i < 4; i++)
-      addr |= gameData[pointer + i] << (i*8);
-    addr -= 0x8000000;  
+    pointerAddress = Integer.parseInt(pointerStr, 16);
+    pointerValue = readAddressFrom(pointerAddress);
 
     try {
       out = new DataOutputStream (new FileOutputStream (pointerStr + ".sjs"));
-      while (gameData[addr] != 0) {
-        out.writeByte(gameData[addr++]);  
-        out.writeByte(gameData[addr++]);  
+      while (gameData[pointerValue] != 0) {
+        out.writeByte(gameData[pointerValue++]);  
+        out.writeByte(gameData[pointerValue++]);  
       }
       out.close();
     } catch (IOException fe) {
@@ -310,25 +257,23 @@ public class Script {
 // -------------------------------------------------------------------  
 
 // Reads <pointer> from node, writes 4 bytes to gameData[pointer] that
-// forms addr (freePos + 0x80000000), and reads text from <data> and writes bytes to gameData[addr].
+// forms pointerValue (freePos + 0x80000000), and reads text from <data> and writes bytes to gameData[pointerValue].
 // freePos is updated after writing.
   public static void writeText (Node n) throws XMLError {
-    int pointer, addr;
+    int pointerAddress, pointerValue;
     TextBlock text;
        
-    String pointerStr = getAttribute(n, "pointer");
-    String translated = getText(n);
+    String pointerStr = XMLHelper.getAttribute(n, "pointer");
+    String translated = XMLHelper.getText(n);
     if (translated.equals("")) return;
   
-    pointer = Integer.parseInt(pointerStr, 16);
+    pointerAddress = Integer.parseInt(pointerStr, 16);
+	pointerValue = readAddressFrom(pointerAddress);
   
     // First, attempt to write translated text into position of original text.
-    addr = 0;
-    for (int i = 0; i < 4; i++) addr |= gameData[pointer + i] << (i * 8);
-    addr -= 0x8000000;
-    int readPtr = addr;
+    int readPtr = pointerValue;
     while (gameData[readPtr] != 0) readPtr++;
-    int originalLength = readPtr - addr + 1; // Including \0
+    int originalLength = readPtr - pointerValue + 1; // Including \0
   
     // Replace control strings with corresponding bytes.
     for (int i = 0; i < controlStrings.size(); i++) {
@@ -342,18 +287,29 @@ public class Script {
     int newLength = text.size(); // Also including \0
   
     if (newLength <= originalLength) {
-      // Translated text is shorter: able to write
-      text.insert(gameData, addr);
+      // Translated text is shorter: able to overwrite original text
+      text.insert(gameData, pointerValue);
     } else {
-      // Translated text is longer: write to end of ROM
-      System.out.println("===================================================");
-      System.out.println("Warning: text " + pointerStr + " is written to end of ROM.");
-      System.out.println("Original text is " + originalLength + " bytes, but translated text is " + newLength + " bytes.");
-      System.out.println("Translated text: " + getText(n));
-      addr = freePos + 0x8000000;
-      for (int i = 0; i < 4; i++)
-        gameData[pointer + i] = (addr >> (i*8)) & 0xFF;  
-      freePos = text.insert(gameData, freePos);
+      // Translated text is longer: possibly write to end of ROM
+      
+      // Have we seen the same string before?
+      if (writtenStrings.containsKey(translated)) {
+        // Yes: modify pointer instead of write string
+        pointerValue = writtenStrings.get(translated);
+		writeAddressTo(pointerValue, pointerAddress);
+        System.out.println("===================================================");
+        System.out.println("Text " + pointerStr + " reuses a previously written string; " + newLength + " bytes saved.");
+      } else {
+        // No: write string and log
+        System.out.println("===================================================");
+        System.out.println("Text " + pointerStr + " is written to end of ROM.");
+        System.out.println("Original text is " + originalLength + " bytes, but translated text is " + newLength + " bytes.");
+        System.out.println("Translated text: " + XMLHelper.getText(n));
+        pointerValue = freePos;
+        writeAddressTo(pointerValue, pointerAddress);
+        freePos = text.insert(gameData, freePos);
+        writtenStrings.put(translated, pointerValue);
+      }
     }
   }    
 
@@ -367,11 +323,11 @@ public class Script {
     list = n.getChildNodes();
     
     // Search for the game rom
-    gameData = readFile(getTextInChildElement(n, "game"));    
-    System.out.println ("Found <" + getTextInChildElement(n, "game") + ">, " + gameData.length + " bytes.");
+    gameData = readFile(XMLHelper.getTextInChildElement(n, "game"));    
+    System.out.println ("Found <" + XMLHelper.getTextInChildElement(n, "game") + ">, " + gameData.length + " bytes.");
         
     // Process Graphics
-    ArrayList<Node> allGraphics = recursiveFindElements(n, "graphic");
+    ArrayList<Node> allGraphics = XMLHelper.recursiveFindElements(n, "graphic");
     for (int i = 0; i < allGraphics.size(); i++) {
       if (extract)
         readGraphic(allGraphics.get(i));
@@ -380,7 +336,7 @@ public class Script {
     }
   
     // Process Text
-    ArrayList<Node> allStrings = recursiveFindElements(n, "text");
+    ArrayList<Node> allStrings = XMLHelper.recursiveFindElements(n, "text");
     for (int i = 0; i < allStrings.size(); i++) {
       if (extract)
         readText(allStrings.get(i));
@@ -390,8 +346,8 @@ public class Script {
   
     // Write back
     if (!extract) {
-      writeFile(gameData, "_" + getTextInChildElement(n, "game"));
-      System.out.println ("Finished <_" + getTextInChildElement(n, "game") + ">.");
+      writeFile(gameData, "_" + XMLHelper.getTextInChildElement(n, "game"));
+      System.out.println ("Finished <_" + XMLHelper.getTextInChildElement(n, "game") + ">.");
     }     
     
   }

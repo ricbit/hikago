@@ -21,7 +21,7 @@ Pointers exist in the ROM. The `pointer` attribute of a `<text>` element gives t
 <text pointer="2d52a0">1.Go is?</text>
 ```
 
-The script will go to 0x002d52a0 of the ROM:
+The script will go to `0x002d52a0` of the ROM:
 
 ```
 002d52a0  1C 54 2D 08 29 54 2D 08  3D 54 2D 08 36 54 2D 08
@@ -29,7 +29,7 @@ The script will go to 0x002d52a0 of the ROM:
 
 Read 4 bytes in little endian (`0x082d541c`), subtract `0x08000000` from it, and get pointer `0x002d541c`. This is where the string actually starts.
 
-Strings in ROM are terminated by one byte of 0x0. In cases where the translated string is longer than the original string, the script will write the translated string to the end of ROM (bytes `0x7fade0` ~ `0x7fffff` are unused), and then overwrite the pointer.
+Strings in ROM are terminated by one byte of `0x0`. In cases where the translated string is longer than the original string, the script will write the translated string to the end of ROM (bytes `0x7fade0` ~ `0x7fffff` are unused), and then overwrite the pointer.
 
 ### Image
 
