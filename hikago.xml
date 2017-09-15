@@ -1805,7 +1805,6 @@
         <text pointer="3076f4">@NAME@ won by 1.5 moku.</text>
         <text pointer="307710">Hmmm, it felt good till halfway.</text>
       </game4>
-	  <!--2nd pass paused here-->
       <game5>
         <text pointer="308ae8">Akari "@NAME@ takes black. Komi is 5.5 moku.</text>
         <text pointer="308b04">Let's begin.</text>
@@ -1836,12 +1835,12 @@
         <text pointer="309024">It's to chase opponent stones to the edge.</text>
         <text pointer="309034">Now these white stones are dead.</text>
         <text pointer="30906c">Akari "Huh? Atari again?</text>
-        <text pointer="3090c4">Akari "Huh? This is strange?</text>
+        <text pointer="3090c4">Akari "What? Why? How?</text>
         <text pointer="309100">Sai "Sorry for Akari-chan but we are taking them!</text>
-        <text pointer="309150">Akari "Huh, another one.</text>
+        <text pointer="309150">Akari "Another one huh.</text>
         <text pointer="30918c">Sai "White cannot escape from the ladder!</text>
         <text pointer="309208">Akari "Uh-oh, on the edge now.</text>
-        <text pointer="309264">Akari "What? 7 stones captured!</text>
+        <text pointer="309264">Akari "What? I lost 7 stones?</text>
         <text pointer="309280">Oh that's a ladder! I shouldn't have escaped at first.</text>
         <text pointer="30929c">If only I saw that earlier...</text>
         <text pointer="3092d4">Sai "Akari-chan played all the way to the edge and thus</text>
@@ -1866,7 +1865,7 @@
         <text pointer="309700">Sai "What's left is yose on bottom.</text>
         <text pointer="309710">Be careful with every move.</text>
         <text pointer="3097b0">Akari "Game has ended right?</text>
-        <text pointer="3097c0">Putting in prisoners...</text>
+        <text pointer="3097c0">Filling in prisoners...</text>
         <text pointer="30989c">Akari "Tidying up.</text>
         <text pointer="309bb0">Akari "@NAME@ has 27 moku.</text>
         <text pointer="309d48">Akari "I have 16+5.5=21.5 moku.</text>
@@ -1900,8 +1899,8 @@
         <text pointer="30b33c">And black has failed.</text>
         <text pointer="30b470">Sai "Playing here forms a net, and white cannot escape capture.</text>
         <text pointer="30b4a4">Akari "Hmm. How can I escape this?</text>
-        <text pointer="30b4fc">Akari "Huh? Maybe here?</text>
-        <text pointer="30b560">Akari "Ah, I'm captured after all.</text>
+        <text pointer="30b4fc">Akari "Maybe here?</text>
+        <text pointer="30b560">Akari "Aww, I'm captured after all.</text>
         <text pointer="30b59c">Sai "White is forming top-left territory.</text>
         <text pointer="30b5ac">To prevent that, let's play here to attack white.</text>
         <text pointer="30b5fc">Akari "Ah, atari.</text>
@@ -1940,7 +1939,7 @@
         <text pointer="30d2dc">Please feel the flow of each move.</text>
         <text pointer="30d32c">Akari "Thank you for being my opponent.</text>
         <text pointer="30d384">Akari "I've been improving thanks to @NAME@.</text>
-        <text pointer="30d3bc">Sai "Actually it's me, not @NAME@. Heh heh.</text>
+        <text pointer="30d3bc">Sai "Actually it's me, not @NAME@. Hahaha.</text>
         <text pointer="30d440">Sai "Now Akari-chan played hane.</text>
         <text pointer="30d450">Let's play here instead of connect.</text>
         <text pointer="30d4a8">Sai "We are in atari. We should escape.</text>
@@ -1962,8 +1961,8 @@
         <text pointer="30d898">Sai "We sacrificed 1 to capture 3 stones.</text>
         <text pointer="30d8b4">It looks similar to kou so don't mix them up.</text>
         <text pointer="30d914">Sai "Don't forget to connect here.</text>
-        <text pointer="30d964">Akari "Ah, 2 stones are dead. Fine, I'll defend.</text>
-        <text pointer="30d9e0">Akari "Ah, there's double atari!</text>
+        <text pointer="30d964">Akari "Aw, 2 stones are dead. Fine, I'll defend.</text>
+        <text pointer="30d9e0">Akari "Hey, double atari!</text>
         <text pointer="30da1c">Akari "Glad I saw it.</text>
         <text pointer="30da50">Sai "Heh heh. So Akari-chan knows double atari.</text>
         <text pointer="30da60">Now, we start yose.</text>
@@ -1981,11 +1980,11 @@
         <text pointer="30de10">Sai "Please remove dead stones. They become your prisoners.</text>
         <text pointer="30de74">Akari "Filling in prisoners.</text>
         <text pointer="30df20">Akari "Tidying up.</text>
-        <text pointer="30e240">Akari "@NAME@ 28 moku.</text>
+        <text pointer="30e240">Akari "@NAME@ has 28 moku.</text>
         <text pointer="30e400">Akari "I have 18+5.5=23.5 moku.</text>
         <text pointer="30e410">@NAME@ won by 4.5 moku.</text>
         <text pointer="30e42c">Thank you. I've become even better now!</text>
-        <text pointer="30e464">Sai "Heh heh, you are welcome.</text>
+        <text pointer="30e464">Sai "Haha, you are welcome.</text>
       </game7>
       <game8>
         <text pointer="30f748">Akari "@NAME@ takes black. Komi is 5.5 moku.</text>
@@ -2059,7 +2058,7 @@
         <text pointer="311ad8">This time we start from tengen.</text>
         <text pointer="311b4c">Sai "Playing 2 intersections ahead and 1 aside like that is keima.</text>
         <text pointer="311b5c">It's the same movement as keima does in shogi.</text>
-        <text pointer="311b6c">It's an often used play so remember that.</text>
+        <text pointer="311b6c">It's an often used move so remember that.</text>
         <text pointer="311be8">Akari "Seems my territory is divided to top and bottom.</text>
         <text pointer="311bf8">I'd better connect them.</text>
         <text pointer="311c50">Sai "Black stones formed a bamboo joint.</text>
@@ -2086,7 +2085,7 @@
         <text pointer="3120e4">Sai "A connection at right angle is a solid connection.</text>
         <text pointer="3120f4">Now we have strong stones from middle to right.</text>
         <text pointer="31212c">Akari "Wow, you are fully connected. It's hard for white to connect!</text>
-        <text pointer="3121f0">Akari "Aah, top white stones are gone.</text>
+        <text pointer="3121f0">Akari "Aww, top white stones are gone.</text>
         <text pointer="31220c">Fine, I'll press here.</text>
         <text pointer="312264">Akari "Game has ended, right?</text>
         <text pointer="312298">Sai "Remove dead white stones. They become our prisoners.</text>
@@ -2225,7 +2224,7 @@
         <text pointer="31464c">Hikaru "Shall we call it a game?</text>
         <text pointer="31467c">Hikaru "Yeah that's it.</text>
         <text pointer="3146ac">Hikaru "It's not over yet!</text>
-        <text pointer="3146dc">Hikaru "Hmph. I resign.</text>
+        <text pointer="3146dc">Hikaru "Well. I resign.</text>
         <text pointer="31470c">Hikaru "What a weirdo, resigning when winning.</text>
       </hikaru>
       <akari>
@@ -2241,14 +2240,14 @@
         <text pointer="315674">Akari "Of course only best players like @NAME@ play in the match.</text>
         <text pointer="3156c0">Akari "Wow @NAME@ you are so good!</text>
         <text pointer="3156e0">Akari "Go easier on me, please?</text>
-        <text pointer="3156f0">Akari "Ahh, @NAME@ is an idiot! Idiot!</text>
+        <text pointer="3156f0">Akari "Ahh! @NAME@ is an idiot! Idiot!</text>
         <text pointer="315700">Akari "Of course only best players like @NAME@ play in the match.</text>
         <text pointer="315758">Akari "I won! @NAME@, let's play again.</text>
         <text pointer="315768">Akari "Yes! It's fun to play with @NAME@.</text>
         <text pointer="315784">Akari "Can I defeat Hikaru now?</text>
         <text pointer="315794">Akari "I have improved since before!</text>
         <text pointer="3157ec">Akari "This feels good!</text>
-        <text pointer="3157fc">Akari "Heh heh, from now I can be @NAME@'s teacher.</text>
+        <text pointer="3157fc">Akari "Haha, from now I can be @NAME@'s teacher.</text>
         <text pointer="315818">Akari "Yes! Yes! I defeated @NAME@!</text>
         <text pointer="315828">Akari "Wow! I don't really understand but I won!</text>
         <text pointer="315868">Akari "Yes! I didn't lose this one!</text>
@@ -2266,8 +2265,8 @@
         <text pointer="315a84">Akari "Like... this?</text>
         <text pointer="315a94">Akari "I should play here right?</text>
         <text pointer="315acc">Akari "Shall we call it?</text>
-        <text pointer="315afc">Akari "There's nowhere to play.</text>
-        <text pointer="315b2c">Akari "Huh? I wanna keep going!</text>
+        <text pointer="315afc">Akari "Indeed, there's nowhere to play.</text>
+        <text pointer="315b2c">Akari "What? I wanna keep going!</text>
         <text pointer="315b5c">Akari "Ow, I lost...</text>
         <text pointer="315b8c">Akari "Thanks for the mercy... but I don't feel like I won.</text>
       </akari>
@@ -2360,7 +2359,7 @@
       </mitani>
       <kaga>
         <text pointer="3193e0">Kaga "Heh, you're 10 years behind me.</text>
-        <text pointer="3193f0">Kaga "Heh heh, I guess it'll entertain a bit!</text>
+        <text pointer="3193f0">Kaga "Well, I guess it'll entertain a bit!</text>
         <text pointer="31940c">Kaga "Yeah, let's begin, whatever.</text>
         <text pointer="31941c">Kaga "Heh heh, haven't played go in a while.</text>
         <text pointer="319438">Kaga "Interesting! I'll show you my power!</text>
@@ -2379,7 +2378,7 @@
         <text pointer="319608">Kaga "Hey what's wrong? Stomachache? Hahaha!</text>
         <text pointer="319618">Kaga "Now you know what happens when you lose, right?</text>
         <text pointer="31963c">First, take off all clothes!</text>
-        <text pointer="319684">Joking! Hahahaha!</text>
+        <text pointer="319684">Just kidding! Hahaha!</text>
         <text pointer="3196e0">Kaga "Come again.</text>
         <text pointer="3196f0">Kaga "If this was shogi I would actually be sorry.</text>
         <text pointer="319700">Kaga "It's time to jump into the winter pool now! Hahaha!</text>
@@ -2400,7 +2399,7 @@
         <text pointer="319954">Kaga "There!</text>
         <text pointer="319964">Kaga "That'll do.</text>
         <text pointer="31999c">Kaga "It's over.</text>
-        <text pointer="3199cc">Kaga "Game ended.</text>
+        <text pointer="3199cc">Kaga "Yeah, that's it.</text>
         <text pointer="3199fc">Kaga "Don't be so hasty. It's not over yet.</text>
         <text pointer="319a2c">Kaga "...resign...</text>
         <text pointer="319a5c">Kaga "What's wrong? You scared?</text>
@@ -2414,7 +2413,7 @@
         <text pointer="31a988">...let's go!</text>
         <text pointer="31a998">Akira "......</text>
         <text pointer="31a9dc">...let's begin.</text>
-        <text pointer="31aa34">Akira "...this is... your true strength...!</text>
+        <text pointer="31aa34">Akira "...so this is... your true strength...!</text>
         <text pointer="31aa44">Akira "@NAME@, I have remembered your name...</text>
         <text pointer="31aa8c">and someday I will defeat you!</text>
         <text pointer="31aa9c">Akira "I have lost...</text>
@@ -2447,11 +2446,11 @@
         <text pointer="31af84">Akira "Yes, this should work!</text>
         <text pointer="31af94">Akira "I will play... here!</text>
         <text pointer="31afa4">Akira "...I see...</text>
-        <text pointer="31afdc">Akira "Game ends here.</text>
+        <text pointer="31afdc">Akira "The game ends here.</text>
         <text pointer="31b00c">Akira "Yes, end it.</text>
         <text pointer="31b03c">Akira "No, it's not ended yet.</text>
         <text pointer="31b06c">Akira "...I resign.</text>
-        <text pointer="31b09c">Akira "The judgement seems mistaken.</text>
+        <text pointer="31b09c">Akira "Your judgement seems mistaken.</text>
       </akira>
       <kishimoto>
         <text pointer="31be5c">Kishimoto "@NAME@. Let's have a good game.</text>
@@ -2478,7 +2477,7 @@
         <text pointer="31c1b8">Kishimoto "Your defense is naive.</text>
         <text pointer="31c1e8">Kishimoto "I see, not naive as I thought.</text>
         <text pointer="31c21c">Kishimoto "This shall make it clear</text>
-        <text pointer="31c290">our skills are different.</text>
+        <text pointer="31c290">that our skill levels differ.</text>
         <text pointer="31c304">Kishimoto "Let's test this move...</text>
         <text pointer="31c314">Kishimoto "Now, can you catch up?</text>
         <text pointer="31c324">Kishimoto "Do you understand this stone?</text>
@@ -2572,10 +2571,10 @@
         <text pointer="31eb6c">Kaneko "Hmm. How about this?</text>
         <text pointer="31eb7c">Kaneko "How about here?</text>
         <text pointer="31ebb4">Kaneko "Shall we end the game?</text>
-        <text pointer="31ebe4">Kaneko "It ends.</text>
+        <text pointer="31ebe4">Kaneko "Yep. It ends.</text>
         <text pointer="31ec14">Kaneko "Not yet. Don't kid me.</text>
         <text pointer="31ec4c">Kaneko "......</text>
-        <text pointer="31ec70">Kaneko "Hmm... fine. I'm back to volleyball club.</text>
+        <text pointer="31ec70">Kaneko "Well... fine. I'm back to volleyball club.</text>
       </kaneko>
       <meijin>
         <text pointer="31fc08">Meijin "Let's play as you wish. There won't be mercy.</text>
@@ -2609,13 +2608,13 @@
         <text pointer="32015c">Meijin "Feel this air, this pressure...!</text>
         <text pointer="32016c">Meijin "An energy is transfered.</text>
         <text pointer="32017c">Meijin "I see a ray of light, connecting all the stars...</text>
-        <text pointer="32018c">Meijin "This'll show my skills.</text>
+        <text pointer="32018c">Meijin "This shall show my skills.</text>
         <text pointer="32019c">Meijin "...there is will and meaning in every single stone.</text>
         <text pointer="3201ac">Meijin "In no game is the weight of any move not felt.</text>
         <text pointer="3201bc">Meijin "I see a ray of light, connecting all the stars...</text>
         <text pointer="3201cc">Meijin "...don't rush, take it slow, one move at a time.</text>
         <text pointer="320204">Meijin "This game is over.</text>
-        <text pointer="320234">Meijin "Hmm, it ends.</text>
+        <text pointer="320234">Meijin "So it ends.</text>
         <text pointer="320264">Meijin "No, it's not over yet.</text>
         <text pointer="320294">Meijin "...I resign.</text>
         <text pointer="3202c4">Meijin "I don't see the purpose but it was not wise.</text>
@@ -2632,7 +2631,7 @@
         <text pointer="67800">Medium</text>
         <text pointer="67804"> Hard</text>
         <text pointer="67808">Expert</text>
-        <text pointer="145394">Reviewing/@ABUTTON@Play/@BBUTTON@Undo/@STARTBUTTON@Return</text>
+        <text pointer="145394">Reviewing/@ABUTTON@Play/@BBUTTON@Undo/@STARTICON@Return</text>
         <text pointer="14539c">@DPAD@Select/@ABUTTON@Confirm</text>
         <text pointer="14538c">Choose from A/B/C</text>
         <text pointer="145390">Play the next move</text>

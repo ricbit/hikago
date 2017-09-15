@@ -398,6 +398,7 @@ public class Script {
     controlStrings.add(new ControlString("@RBUTTON@", new char[]{0x84, 0x46}));
     controlStrings.add(new ControlString("@SELECTBUTTON@", new char[]{0x84, 0x48, 0x84, 0x49}));
     controlStrings.add(new ControlString("@STARTBUTTON@", new char[]{0x84, 0x4a, 0x84, 0x4b}));
+    controlStrings.add(new ControlString("@STARTICON@", new char[]{0x84, 0x4c}));
     controlStrings.add(new ControlString("@STRESSRED@", new char[]{0x87, 0x55}));
 	// @STRESS@ mostly makes text blue, but in the tutorial menu it makes text yellow instead.
     controlStrings.add(new ControlString("@STRESS@", new char[]{0x87, 0x56}));
