@@ -189,8 +189,8 @@
         <text pointer="2d52a4">2.Rules</text>
         <text pointer="2d52a8">3.Strategies</text>
         <text pointer="2d52ac">4.Tesuji</text>
-        <text pointer="2d52b0">@STRESS@Controls@ENDSTRESS@</text>
-        <text pointer="2d52b4">@STRESS@End@ENDSTRESS@</text>
+        <text pointer="2d52b0">@YELLOW@Controls@ENDCOLOR@</text>
+        <text pointer="2d52b4">@YELLOW@End@ENDCOLOR@</text>
         <text pointer="2d52f8">1-1.Board&amp;Stone</text>
         <text pointer="2d52fc">1-2.Counting</text>
         <text pointer="2d5300">1-3.Capturing</text>
@@ -225,16 +225,16 @@
           <text pointer="2d5b1c">Next, the stones.</text>
           <text pointer="2d5b5c">Stones come in black and white, one for each player.</text>
           <text pointer="2d5b6c">Stones are played on intersections.</text>
-          <text pointer="2d5bac">They can also be played on the @STRESSRED@edges@ENDSTRESS@.</text>
+          <text pointer="2d5bac">They can also be played on the @RED@edges@ENDCOLOR@.</text>
           <text pointer="2d5bd8">Like this.</text>
-          <text pointer="2d5c20">Or on the @STRESSRED@corners@ENDSTRESS@ like this.</text>
+          <text pointer="2d5c20">Or on the @RED@corners@ENDCOLOR@ like this.</text>
           <text pointer="2d5c68">Sai "A game proceeds by black and white playing alternatively.</text>
         </chapter1_1>
         <chapter1_2>
           <text pointer="2d689c">Sai "In go, the player with more territory wins.</text>
           <text pointer="2d68d8">For example, these black stones surround some territory for black.</text>
-          <text pointer="2d68e8">Such territory is called @STRESSRED@ji@ENDSTRESS@.</text>
-          <text pointer="2d68f8">The unit of ji is @STRESSRED@moku@ENDSTRESS@.</text>
+          <text pointer="2d68e8">Such territory is called @RED@ji@ENDCOLOR@.</text>
+          <text pointer="2d68f8">The unit of ji is @RED@moku@ENDCOLOR@.</text>
           <text pointer="2d6908">To count ji, count surrounded intersections, not the stones.</text>
           <text pointer="2d69b4">Here, black has 3 moku.</text>
           <text pointer="2d6a30">Sai "Question.</text>
@@ -289,7 +289,7 @@
           <text pointer="2d8bf4">However, beginners may forget how to capture on edges and corners.</text>
           <text pointer="2d8c18">Also, don't just focus on capturing, also try to avoid being captured.</text>
           <text pointer="2d8c3c">Lastly, on how captured stones are used.</text>
-          <text pointer="2d8c60">Captured stones are called @STRESSRED@prisoners@ENDSTRESS@.</text>
+          <text pointer="2d8c60">Captured stones are called @RED@prisoners@ENDCOLOR@.</text>
           <text pointer="2d8c84">Prisoners reduce your opponent's territory at end of games.</text>
         </chapter1_3>
         <chapter1_4>
@@ -307,8 +307,8 @@
           <text pointer="2da200">For an example, look at this game.</text>
           <text pointer="2da210">Here, black gets 4 handicap stones.</text>
           <text pointer="2da220">These 4 stones count as 1 move, so it's white's turn next.</text>
-          <text pointer="2da27c">If no handicap stones are placed, it's called an @STRESSRED@even game@ENDSTRESS@.</text>
-          <text pointer="2da2a0">In even games, use @STRESSRED@nigiri@ENDSTRESS@ to decide sides.</text>
+          <text pointer="2da27c">If no handicap stones are placed, it's called an @RED@even game@ENDCOLOR@.</text>
+          <text pointer="2da2a0">In even games, use @RED@nigiri@ENDCOLOR@ to decide sides.</text>
           <text pointer="2da2c4">One player grabs some stones, the other guesses odd or even.</text>
           <text pointer="2da2e8">Let's do a nigiri for real.</text>
           <text pointer="2da30c">Hikaru, please demonstrate nigiri.</text>
@@ -317,7 +317,7 @@
           <text pointer="2da60c">Correct! You take black.</text>
           <text pointer="2da630">Missed! I'll go black.</text>
           <text pointer="2da6a0">Sai "In an even game, after play order is decided,</text>
-          <text pointer="2da6c4">since black has an advantage, a handicap, @STRESSRED@komi@ENDSTRESS@, is given to white.</text>
+          <text pointer="2da6c4">since black has an advantage, a handicap, @RED@komi@ENDCOLOR@, is given to white.</text>
           <text pointer="2da6e8">Komi means additional territory.</text>
           <text pointer="2da70c">When komi is 5.5 moku, white starts the game with 5.5 moku.</text>
           <text pointer="2da730">Komi is not visible, and only takes effect when counting territory.</text>
@@ -327,22 +327,22 @@
         <chapter1_5>
           <text pointer="2db784">Sai "When neither player is able to gain any additional territory,</text>
           <text pointer="2db7a8">a game ends.</text>
-          <text pointer="2db7cc">This is called @STRESSRED@shuukyoku@ENDSTRESS@.</text>
+          <text pointer="2db7cc">This is called @RED@shuukyoku@ENDCOLOR@.</text>
           <text pointer="2db7f0">Then, after counting, the one with more territory wins.</text>
           <text pointer="2db85c">Hikaru "If you find a game hopeless, you can also surrender.</text>
-          <text pointer="2db880">In go, this is called to @STRESSRED@resign@ENDSTRESS@.</text>
+          <text pointer="2db880">In go, this is called to @RED@resign@ENDCOLOR@.</text>
           <text pointer="2db8a4">The resigning player loses regardless of territory.</text>
           <text pointer="2db910">Sai "Now, after a game ends, before territory is counted,</text>
           <text pointer="2db934">there are things that must be done.</text>
           <text pointer="2db97c">First, areas that belong to neither player are filled.</text>
-          <text pointer="2db9d4">These intersections are called @STRESSRED@dame@ENDSTRESS@.</text>
+          <text pointer="2db9d4">These intersections are called @RED@dame@ENDCOLOR@.</text>
           <text pointer="2db9fc">Then, dead opponent stones in your territory become prisoners.</text>
           <text pointer="2dbab4">Finally, put prisoners into opponent territory.</text>
           <text pointer="2dbb38">Hikaru "That's how prisoners reduce opponent territory.</text>
           <text pointer="2dbba4">Sai "Now we are almost ready to start counting...</text>
           <text pointer="2dbbd0">but the board is so messy it's difficult to count.</text>
           <text pointer="2dbbe0">So we move stones without affecting territory, to make it easier.</text>
-          <text pointer="2dbd40">This is @STRESSRED@seichi@ENDSTRESS@.</text>
+          <text pointer="2dbd40">This is @RED@seichi@ENDCOLOR@.</text>
           <text pointer="2dbd94">Hikaru "See, this is easier, right?</text>
           <text pointer="2dbe00">Sai "Now we can finally count.</text>
           <text pointer="2dbe2c">Who wins in this game? Do you know?</text>
@@ -358,7 +358,7 @@
           <text pointer="2dc190">With komi, white adds the komi to their territory.</text>
           <text pointer="2dc1a0">So, white has 16+5.5=21.5 moku.</text>
           <text pointer="2dc1b0">Here black still wins even with komi.</text>
-          <text pointer="2dc208">Hikaru "By the way, when both players have the same moku, it's a @STRESSRED@draw@ENDSTRESS@.</text>
+          <text pointer="2dc208">Hikaru "By the way, when both players have the same moku, it's a @RED@draw@ENDCOLOR@.</text>
           <text pointer="2dc22c">It won't happen when there's komi.</text>
           <text pointer="2dc298">Sai "Do you understand winning and losing now?</text>
           <text pointer="2dc2bc">Ending a game and counting may be difficult at first.</text>
@@ -367,7 +367,7 @@
       </chapter1>
       <chapter2>
         <chapter2_1>
-          <text pointer="2dd8ec">Sai "@STRESSRED@Illegal plays@ENDSTRESS@ are places you cannot play.</text>
+          <text pointer="2dd8ec">Sai "@RED@Illegal plays@ENDCOLOR@ are places you cannot play.</text>
           <text pointer="2dd938">For example, since black fully surrounds here,</text>
           <text pointer="2dd948">a white stone played here will immediately be captured.</text>
           <text pointer="2dd998">Like this, you can't play where you'll be immediately captured.</text>
@@ -394,7 +394,7 @@
         </chapter2_1>
         <chapter2_2>
           <text pointer="2df534">Sai "When you are one move away from capturing opponent stones,</text>
-          <text pointer="2df558">it's an @STRESSRED@atari@ENDSTRESS@.</text>
+          <text pointer="2df558">it's an @RED@atari@ENDCOLOR@.</text>
           <text pointer="2df57c">Let's see an atari in action.</text>
           <text pointer="2df5cc">I play black. First let's play here.</text>
           <text pointer="2df610">Next I can play here to capture white. That last stone caused an atari.</text>
@@ -431,11 +431,11 @@
           <text pointer="2dfd4c">But if black plays here, then it's 2 ataris at the same time.</text>
           <text pointer="2dfd9c">If white defends this stone, that one is captured.</text>
           <text pointer="2dfe44">Defend that one, and this one is captured.</text>
-          <text pointer="2dfee4">Hikaru "Like that, making 2 ataris with 1 move is a @STRESSRED@double atari@ENDSTRESS@.</text>
+          <text pointer="2dfee4">Hikaru "Like that, making 2 ataris with 1 move is a @RED@double atari@ENDCOLOR@.</text>
           <text pointer="2dff08">It's an easy technique in real games, so remember that.</text>
         </chapter2_2>
         <chapter2_3>
-          <text pointer="2e19c4">Sai "There's a special rule called @STRESSRED@kou@ENDSTRESS@.</text>
+          <text pointer="2e19c4">Sai "There's a special rule called @RED@kou@ENDCOLOR@.</text>
           <text pointer="2e19e8">I'll explain what kou is.</text>
           <text pointer="2e1a40">In this situation, first black captures white like this.</text>
           <text pointer="2e1a88">Then white may play here to capture black.</text>
@@ -456,7 +456,7 @@
           <text pointer="2e1df4">Sai "It's a complex rule so pay attention until you get used to it.</text>
         </chapter2_3>
         <chapter2_4>
-          <text pointer="2e34e4">Sai "On the board, some stones are @STRESSRED@alive@ENDSTRESS@, some are @STRESSRED@dead@ENDSTRESS@.</text>
+          <text pointer="2e34e4">Sai "On the board, some stones are @RED@alive@ENDCOLOR@, some are @RED@dead@ENDCOLOR@.</text>
           <text pointer="2e3508">When stones can absolutely not be captured, they are alive.</text>
           <text pointer="2e352c">Likewise, stones that will inevitably be captured are dead.</text>
           <text pointer="2e3550">Now I'll explain what formations make stones alive or dead.</text>
@@ -465,7 +465,7 @@
           <text pointer="2e35dc">but white cannot play at arrows, for they are illegal plays.</text>
           <text pointer="2e35ec">Thus, these black stones cannot be captured, and they are alive.</text>
           <text pointer="2e3608">This group of black stones has 2 holes in them.</text>
-          <text pointer="2e3618">It's called @STRESSRED@two eyes@ENDSTRESS@.</text>
+          <text pointer="2e3618">It's called @RED@two eyes@ENDCOLOR@.</text>
           <text pointer="2e3628">When you make two eyes, your stones cannot be captured, and are alive.</text>
           <text pointer="2e3660">Then, how about this.</text>
           <text pointer="2e3698">This intersection seems to be an illegal play for white,</text>
@@ -511,7 +511,7 @@
           <text pointer="2e3d5c">So, black seems to have two eyes,</text>
           <text pointer="2e3d6c">but is actually dead.</text>
           <text pointer="2e3d7c">Such formations that seem to be but are not two eyes</text>
-          <text pointer="2e3d8c">are called @STRESSRED@false eyes@ENDSTRESS@. They do not make stones alive.</text>
+          <text pointer="2e3d8c">are called @RED@false eyes@ENDCOLOR@. They do not make stones alive.</text>
           <text pointer="2e3d9c">Be careful not to confuse eyes with false eyes.</text>
           <text pointer="2e3df8">Sai "Do you understand life and death now?</text>
           <text pointer="2e3e1c">Life and death can be difficult at first,</text>
@@ -519,7 +519,7 @@
           <text pointer="2e3e64">Remembering the basic rules will help you understand faster.</text>
         </chapter2_4>
         <chapter2_5>
-          <text pointer="2e52ec">Sai "@STRESSRED@Seki@ENDSTRESS@ is when neither player can capture without being captured.</text>
+          <text pointer="2e52ec">Sai "@RED@Seki@ENDCOLOR@ is when neither player can capture without being captured.</text>
           <text pointer="2e5310">I'll show what a seki looks like.</text>
           <text pointer="2e5354">This is a seki. Let's start with black.</text>
           <text pointer="2e5388">Black plays here to atari white on the inside.</text>
@@ -542,7 +542,7 @@
       <chapter3>
         <chapter3_1>
           <text pointer="2ee864">Sai "From now I'll explain how actual games proceed.</text>
-          <text pointer="2ee888">First, about @STRESSRED@sente@ENDSTRESS@ and @STRESSRED@gote@ENDSTRESS@.</text>
+          <text pointer="2ee888">First, about @RED@sente@ENDCOLOR@ and @RED@gote@ENDCOLOR@.</text>
           <text pointer="2ee8ac">Sente is to play on the attacking side.</text>
           <text pointer="2ee8d0">And gote is to play on the defending or escaping side.</text>
           <text pointer="2ee8f4">Though black starts a game and initially has sente,</text>
@@ -572,20 +572,20 @@
           <text pointer="2eee90">Black has sente.</text>
           <text pointer="2eeea0">How can white play to take sente?</text>
           <text pointer="2eeec0">White plays here to prevent black from invading.</text>
-          <text pointer="2eeee8">Playing on the diagonal to suppress the opponent is called @STRESSRED@hane@ENDSTRESS@.</text>
+          <text pointer="2eeee8">Playing on the diagonal to suppress the opponent is called @RED@hane@ENDCOLOR@.</text>
           <text pointer="2eef0c">Black plays here to block white.</text>
           <text pointer="2eef54">White plays here out of atari.</text>
-          <text pointer="2eef8c">This move @STRESSRED@connected@ENDSTRESS@ white stones.</text>
+          <text pointer="2eef8c">This move @RED@connected@ENDCOLOR@ white stones.</text>
           <text pointer="2ef01c">Black is in danger so plays here</text>
           <text pointer="2ef0ac">and the fight ends for now.</text>
           <text pointer="2ef0c0">And it's white's turn. Now white has taken sente from black.</text>
-          <text pointer="2ef0e4">Using hane then connect is called @STRESSRED@hane-connect@ENDSTRESS@.</text>
+          <text pointer="2ef0e4">Using hane then connect is called @RED@hane-connect@ENDCOLOR@.</text>
           <text pointer="2ef150">Hikaru "Hane-connect can do a lot, like take sente or harden territory.</text>
           <text pointer="2ef174">Be sure to learn that by heart.</text>
         </chapter3_1>
         <chapter3_2>
           <text pointer="2f08fc">Sai "A game can be divided into opening, middlegame and endgame.</text>
-          <text pointer="2f0920">Laying out stones at the beginning is @STRESSRED@fuseki@ENDSTRESS@.</text>
+          <text pointer="2f0920">Laying out stones at the beginning is @RED@fuseki@ENDCOLOR@.</text>
           <text pointer="2f0944">You make foundations of territory and prepare for middlegame.</text>
           <text pointer="2f0968">Let's see how to play the opening.</text>
           <text pointer="2f09a4">First, decide where do you want your territory to be. Remember that</text>
@@ -599,13 +599,13 @@
           <text pointer="2f0b10">If not, you'll lose a lot of moku.</text>
           <text pointer="2f0b34">So Sai, what are some good places to play at opening?</text>
           <text pointer="2f0ba0">Sai "Let me explain.</text>
-          <text pointer="2f0bd4">First there's @STRESSRED@3-3@ENDSTRESS@. It's on the 3rd row from either direction.</text>
+          <text pointer="2f0bd4">First there's @RED@3-3@ENDCOLOR@. It's on the 3rd row from either direction.</text>
           <text pointer="2f0bf0">3-3 makes it easy to take a corner.</text>
           <text pointer="2f0c20">But it's not advantageous to fights in the middle.</text>
-          <text pointer="2f0c68">Next is the @STRESSRED@star@ENDSTRESS@. It's on the 4th row from either direction.</text>
+          <text pointer="2f0c68">Next is the @RED@star@ENDCOLOR@. It's on the 4th row from either direction.</text>
           <text pointer="2f0c84">They have a nice balance between corner and middle.</text>
           <text pointer="2f0cc0">But the corner may be taken from you if opponent plays 3-3.</text>
-          <text pointer="2f0d34">Finally, @STRESSRED@komoku@ENDSTRESS@, or 3-4.</text>
+          <text pointer="2f0d34">Finally, @RED@komoku@ENDCOLOR@, or 3-4.</text>
           <text pointer="2f0d50">3-4 covers the corner and responds to the middle</text>
           <text pointer="2f0d60">so it's considered the most steady play.</text>
           <text pointer="2f0dec">Sai "Since black and white plays alternatively,</text>
@@ -633,7 +633,7 @@
           <text pointer="2f309c">Now I'll show some basic ways to play middlegame.</text>
           <text pointer="2f30d8">Since you surround intersections to take them,</text>
           <text pointer="2f30e8">it's good to connect your stones.</text>
-          <text pointer="2f3104">Here the black stones are @STRESSRED@connected@ENDSTRESS@.</text>
+          <text pointer="2f3104">Here the black stones are @RED@connected@ENDCOLOR@.</text>
           <text pointer="2f3120">Different from the white stones seperated in 2 areas,</text>
           <text pointer="2f31c0">for black its easier to make territory when connected.</text>
           <text pointer="2f31d0">It's also harder to be captured.</text>
@@ -642,7 +642,7 @@
           <text pointer="2f4760">Too bad! Incorrect. I'll explain.</text>
           <text pointer="2f3258">By playing B, black stones are connected horizontally</text>
           <text pointer="2f3274">and it also prevents white from connecting vertically.</text>
-          <text pointer="2f3314">Preventing opponent's connection is to @STRESSRED@cut@ENDSTRESS@.</text>
+          <text pointer="2f3314">Preventing opponent's connection is to @RED@cut@ENDCOLOR@.</text>
           <text pointer="2f3370">Hikaru "That was horizontal &amp; vertical connection.</text>
           <text pointer="2f3394">Then, how about diagonal?</text>
           <text pointer="2f33d0">These black stones seem to be diagonally connected, right?</text>
@@ -670,7 +670,7 @@
           <text pointer="2f39e8">Black plays here</text>
           <text pointer="2f3a1c">and white gets cut by black stones.</text>
           <text pointer="2f3a80">Actually it's here.</text>
-          <text pointer="2f3aac">This formation is called @STRESSRED@bamboo joint@ENDSTRESS@ for its shape.</text>
+          <text pointer="2f3aac">This formation is called @RED@bamboo joint@ENDCOLOR@ for its shape.</text>
           <text pointer="2f3abc">So what if black plays inside?</text>
           <text pointer="2f3af4">White connects every stone.</text>
           <text pointer="2f3b64">Sai "Knowing how to connect will make you better at making territory.</text>
@@ -738,14 +738,14 @@
           <text pointer="2f8f78">so endgame is when borders of territories are finalized.</text>
           <text pointer="2f8f9c">After that, the winner can be determined.</text>
           <text pointer="2f8fc0">I'll explain how to play endgame.</text>
-          <text pointer="2f8ff4">Finalizing borders is called @STRESSRED@yose@ENDSTRESS@.</text>
+          <text pointer="2f8ff4">Finalizing borders is called @RED@yose@ENDCOLOR@.</text>
           <text pointer="2f9004">For example, on the left, territories are clearly identified,</text>
           <text pointer="2f9014">but it's still unclear who owns the right corner.</text>
           <text pointer="2f9024">So we use stones from opening and middlegame, strive to connect them,</text>
           <text pointer="2f9034">expand our territory and shrink opponent's. That's yose.</text>
           <text pointer="2f9044">A major yose that gains 10 moku or more is called</text>
-          <text pointer="2f9054">a @STRESSRED@large yose@ENDSTRESS@.</text>
-          <text pointer="2f90a8">Sai "After large yoses come delicate @STRESSRED@small yoses@ENDSTRESS@.</text>
+          <text pointer="2f9054">a @RED@large yose@ENDCOLOR@.</text>
+          <text pointer="2f90a8">Sai "After large yoses come delicate @RED@small yoses@ENDCOLOR@.</text>
           <text pointer="2f90cc">Small yoses yield 5 moku or less, but are still important.</text>
           <text pointer="2f90f0">Let's start with small yose.</text>
           <text pointer="2f913c">Look at this situation.</text>
@@ -781,7 +781,7 @@
           <text pointer="2e6990">Tesujis are frequently used strategies in go.</text>
           <text pointer="2e69b4">I'll focus on tesujis on capturing.</text>
           <text pointer="2e6a18">Hikaru "Tesujis are like math formulas, highly useful once remembered.</text>
-          <text pointer="2e6a54">Sai "First, the @STRESSRED@ladder@ENDSTRESS@.</text>
+          <text pointer="2e6a54">Sai "First, the @RED@ladder@ENDCOLOR@.</text>
           <text pointer="2e6aa0">Ladder is to chase the opponent towards the edge.</text>
           <text pointer="2e6ab0">Let's chase this white stone.</text>
           <text pointer="2e6ae4">First, black plays here, atari.</text>
@@ -800,7 +800,7 @@
           <text pointer="2e6e4c">Let's see what happens if there's a white stone here.</text>
           <text pointer="2e6e80">White gets connected so black is unable to atari anymore.</text>
           <text pointer="2e6ea4">This is a failed ladder. Here this white stone played a critical role.</text>
-          <text pointer="2e6ec0">The stone that prevents ladder is called @STRESSRED@ladder-breaker@ENDSTRESS@.</text>
+          <text pointer="2e6ec0">The stone that prevents ladder is called @RED@ladder-breaker@ENDCOLOR@.</text>
           <text pointer="2e6f28">Sai "Finally, a question on ladder.</text>
           <text pointer="2e6f64">White's turn. Where should white play?</text>
           <text pointer="2e7294">Choose from A/B</text>
@@ -813,7 +813,7 @@
           <text pointer="2e70b8">Remember to look for chances so as to not waste them.</text>
         </chapter4_1>
         <chapter4_2>
-          <text pointer="2e874c">Sai "@STRESSRED@Net@ENDSTRESS@ is to ambush and capture opponent stones.</text>
+          <text pointer="2e874c">Sai "@RED@Net@ENDCOLOR@ is to ambush and capture opponent stones.</text>
           <text pointer="2e8798">Let's capture this stone with net.</text>
           <text pointer="2e87d8">First, black plays here. Though not an atari,</text>
           <text pointer="2e880c">it prevents white's connection.</text>
@@ -839,7 +839,7 @@
           <text pointer="2e8d50">Hikaru "Be sure to know when to ladder and when to net!</text>
         </chapter4_2>
         <chapter4_3>
-          <text pointer="2ea2d4">Sai "Next is @STRESSRED@snapback@ENDSTRESS@.</text>
+          <text pointer="2ea2d4">Sai "Next is @RED@snapback@ENDCOLOR@.</text>
           <text pointer="2ea2f8">Snapback is to let opponent capture some stones,</text>
           <text pointer="2ea31c">and then counter-capture more opponent stones.</text>
           <text pointer="2ea368">Black's turn. How can black capture the 2 white stones?</text>
@@ -864,7 +864,7 @@
           <text pointer="2ea824">Sai "They say snapback breaks opponent bones by cutting your own meat.</text>
         </chapter4_3>
         <chapter4_4>
-          <text pointer="2eb93c">Sai "I'll explain @STRESSRED@oiotoshi@ENDSTRESS@.</text>
+          <text pointer="2eb93c">Sai "I'll explain @RED@oiotoshi@ENDCOLOR@.</text>
           <text pointer="2eb960">Oiotoshi is to repeatedly atari until capture.</text>
           <text pointer="2eb984">It's a bit hard, but a very satisfying tesuji.</text>
           <text pointer="2eb9d4">For example, look at this board.</text>
@@ -899,7 +899,7 @@
           <text pointer="2ec008">Think carefully until the very end.</text>
         </chapter4_4>
         <chapter4_5>
-          <text pointer="2ed1b4">Sai "Finally, an interesting tesuji called @STRESSRED@crane's nest@ENDSTRESS@.</text>
+          <text pointer="2ed1b4">Sai "Finally, an interesting tesuji called @RED@crane's nest@ENDCOLOR@.</text>
           <text pointer="2ed1e8">Here, are the 3 white stones able to escape?</text>
           <text pointer="2ed1f8">Actually, no. Let's think about why not.</text>
           <text pointer="2ed234">White plays here.</text>
@@ -925,8 +925,8 @@
         <text pointer="14424c">Play anywhere you like</text>
         <text pointer="2fb6e0">Hikaru "Right, like that.</text>
         <text pointer="2fb738">Sai "Then, I'll explain some help functions in games.</text>
-        <text pointer="2fb788">Hikaru "One function is the @STRESSRED@territory analyzer@ENDSTRESS@.</text>
-        <text pointer="2fb7ac">Another is @STRESSRED@hint@ENDSTRESS@ that suggests moves.</text>
+        <text pointer="2fb788">Hikaru "One function is the @RED@territory analyzer@ENDCOLOR@.</text>
+        <text pointer="2fb7ac">Another is @RED@hint@ENDCOLOR@ that suggests moves.</text>
         <text pointer="2fb7d0">First, territory analyzer. Press @RBUTTON@.</text>
         <text pointer="2fc18c">Press @RBUTTON@</text>
         <text pointer="2fc1ac">Analyzing</text>
@@ -937,16 +937,16 @@
         <text pointer="2fc344">Working</text>
         <text pointer="2fc350">7|3 5|6 2|8 suggested</text>
         <text pointer="2fb89c">Hikaru "It suggests 3 moves right?</text>
-        <text pointer="2fb8c0">If hint is set to @STRESSRED@choose-3@ENDSTRESS@, up to 3 suggestions will be given.</text>
+        <text pointer="2fb8c0">If hint is set to @RED@choose-3@ENDCOLOR@, up to 3 suggestions will be given.</text>
         <text pointer="2fb8e4">Which to choose is up to @NAME@.</text>
-        <text pointer="2fb908">If hint is set to @STRESSRED@best@ENDSTRESS@, it only suggests the best move.</text>
+        <text pointer="2fb908">If hint is set to @RED@best@ENDCOLOR@, it only suggests the best move.</text>
         <text pointer="2fb92c">No more confusion!</text>
         <text pointer="2fb950">Try using it on various occasions.</text>
         <text pointer="2fb9a0">Sai "Both functions can be cancelled by pressing @BBUTTON@.</text>
         <text pointer="2fb9cc">Now I'll explain some other functions that help in games.</text>
         <text pointer="2fba1c">Hikaru "Other help functions include</text>
-        <text pointer="2fba40">@STRESSRED@realtime territory analyzer@ENDSTRESS@, and</text>
-        <text pointer="2fba64">@STRESSRED@atari warning@ENDSTRESS@ that shows opponent ataris.</text>
+        <text pointer="2fba40">@RED@realtime territory analyzer@ENDCOLOR@, and</text>
+        <text pointer="2fba64">@RED@atari warning@ENDCOLOR@ that shows opponent ataris.</text>
         <text pointer="2fba88">First, realtime territory analyzer. Instead of me talking,</text>
         <text pointer="2fbaac">why not experience for yourself. Try moving the cursor around.</text>
         <text pointer="2fbb00">Hikaru "Is it easy to see how to expand territory now?</text>
@@ -957,14 +957,14 @@
         <text pointer="2fbbe4">so you won't ever get captured by surprise.</text>
         <text pointer="2fbc3c">Sai "Finally, on how to end a game.</text>
         <text pointer="2fbc8c">Hikaru "A game ends when neither players want to make any move.</text>
-        <text pointer="2fbcb0">You can @STRESSRED@propose endgame@ENDSTRESS@ when you want to.</text>
+        <text pointer="2fbcb0">You can @RED@propose endgame@ENDCOLOR@ when you want to.</text>
         <text pointer="2fbcd4">Press @SELECTBUTTON@ to show the menu and we'll look at it.</text>
         <text pointer="2fc460">Press select</text>
-        <text pointer="2fbd34">Hikaru "Choose @STRESSRED@propose endgame@ENDSTRESS@ to propose to end the game.</text>
+        <text pointer="2fbd34">Hikaru "Choose @RED@propose endgame@ENDCOLOR@ to propose to end the game.</text>
         <text pointer="2fbd58">Game ends when opponent agrees.</text>
-        <text pointer="2fbd7c">Alternatively, consecutive @STRESSRED@passes@ENDSTRESS@ also end a game.</text>
-        <text pointer="2fbda0">But it's usually safer to @STRESSRED@propose endgame@ENDSTRESS@.</text>
-        <text pointer="2fbdf8">Sai "Right. Even if opponent denies your @STRESSRED@proposal@ENDSTRESS@,</text>
+        <text pointer="2fbd7c">Alternatively, consecutive @RED@passes@ENDCOLOR@ also end a game.</text>
+        <text pointer="2fbda0">But it's usually safer to @RED@propose endgame@ENDCOLOR@.</text>
+        <text pointer="2fbdf8">Sai "Right. Even if opponent denies your @RED@proposal@ENDCOLOR@,</text>
         <text pointer="2fbe1c">you don't lose your turn.</text>
         <text pointer="2fbe40">Now, @NAME@ should know everything needed to play a game.</text>
         <text pointer="2fbe64">Just as a reminder, there's a control cheatsheet.</text>
